@@ -1,0 +1,27 @@
+syntax = "v1"
+
+info(
+	title: "type title here"
+	desc: "type desc here"
+	author: "type author here"
+	email: "type email here"
+	version: "type version here"
+)
+
+type (
+	FooReq {
+		Name string `form:"name"`
+	}
+	FooRsp {
+		Msg string `json:"msg"`
+	}
+)
+
+@server(
+	group: foo
+)
+service api {
+	@doc ""
+	@handler Hello
+	get /hello (FooReq) returns (FooRsp)
+}
